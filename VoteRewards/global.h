@@ -3,22 +3,15 @@
 #include <yaml.h>
 #include <string>
 #include <map>
-#include <log.h>
-#include "playerdb.h"
+#include <base/log.h>
+#include "base/playerdb.h"
 #include <Actor/Actor.h>
 #include <Actor/Player.h>
-#include <economy.h>
+#include <mods/Economy.h>
 #include <Item/ItemStack.h>
 #include <Core/NBT.h>
 #include <Core/DataIO.h>
-#include <command.h>
-#include <Command/Command.h>
-#include <Command/CommandRegistry.h>
-#include <Command/CommandPermissionLevel.h>
-#include <Command/CommandFlag.h>
-#include <Command/CommandParameterData.h>
-#include <Command/CommandOutput.h>
-#include <Command/CommandOrigin.h>
+#include <mods/CommandSupport.h>
 
 #include <Packet/TransferPacket.h>
 #include <Packet/TextPacket.h>

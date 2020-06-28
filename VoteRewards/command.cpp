@@ -89,7 +89,6 @@ public:
                   // originCommand->allowSelectorExpansion = false;
                   std::string command = s;
                   boost::replace_all(command, "%name%", it->name);
-                  std::cout << command << std::endl;
                   auto value = Mod::CommandSupport::GetInstance().ExecuteCommand(std::move(originCommand), command);
                 }
               }
