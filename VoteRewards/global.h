@@ -30,14 +30,12 @@
 
 struct Settings {
   std::string token;
-  bool executeCommands;
   std::vector<std::string> commands;
-  int money;
   std::string link;
 
   template <typename IO> static inline bool io(IO f, Settings &settings, YAML::Node &node) {
-    return f(settings.token, node["TOKEN"]) && f(settings.money, node["moneyReward"]) &&
-           f(settings.link, node["link"]) && f(settings.executeCommands, node["executeCommands"]) &&
+    return f(settings.token, node["TOKEN"]) &&
+           f(settings.link, node["link"]) &&
            f(settings.commands, node["commands"]);
   }
 };

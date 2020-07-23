@@ -83,16 +83,12 @@ public:
               if (!it) return;
               auto pk = TextPacket::createTextPacket<TextPacketType::SystemMessage>("commands.vote.voted");
               it->player->sendNetworkPacket(pk);
-              if (settings.executeCommands) {
-                for (std::string s : settings.commands) {
-                  auto originCommand = std::make_unique<Mod::CustomCommandOrigin>();
-                  // originCommand->allowSelectorExpansion = false;
-                  std::string command = s;
-                  boost::replace_all(command, "%name%", it->name);
-                  auto value = Mod::CommandSupport::GetInstance().ExecuteCommand(std::move(originCommand), command);
-                }
+              for (std::string s : settings.commands) {
+                auto originCommand = std::make_unique<Mod::CustomCommandOrigin>();
+                std::string command = s;
+                boost::replace_all(command, "%name%", it->name);
+                auto value = Mod::CommandSupport::GetInstance().ExecuteCommand(std::move(originCommand), command);
               }
-              Mod::Economy::UpdateBalance(it->player, settings.money, "vote");
               inProcess.erase(it->xuid);
             });
             return;
